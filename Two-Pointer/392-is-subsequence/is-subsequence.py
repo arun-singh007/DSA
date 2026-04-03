@@ -8,7 +8,4 @@ class Solution:
                 tp += 1
             else:
                 tp += 1
-        if sp == len(s):
-            return True
-        return False 
-        
+        return sp == len(s)
