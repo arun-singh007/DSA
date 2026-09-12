@@ -1,7 +1,5 @@
 class Solution:
     def check(self,l,r,s):
-        if l == r:
-            return True
         while l < r:
             if s[l] != s[r]:
                 return False
