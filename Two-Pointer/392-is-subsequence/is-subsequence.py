@@ -2,10 +2,17 @@ class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
         sp = 0
         tp = 0
-        while sp < len(s) and tp < len(t):
+        slen = len(s)
+        tlen = len(t)
+        if slen == 0 :
+            return True
+        if tlen == 0 :
+            return False
+        while sp < slen :
             if s[sp] == t[tp]:
-                sp += 1
-                tp += 1
-            else:
-                tp += 1
-        return sp == len(s)
+                sp = sp + 1
+            tp = tp + 1
+            if tp == tlen :
+                break
+        return sp == slen
+        
