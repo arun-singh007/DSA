@@ -5,14 +5,10 @@ class Solution:
         max_water = 0
         while left < right:
             water = abs(right - left) * min(height[left],height[right])
-            if water > max_water:
-                max_water = water
+            max_water = max(water,max_water)
             if height[left] > height[right]:
                 right-=1
-            elif height[left] < height[right]:
-                left+=1
             else:
-                right-=1
                 left+=1
         return max_water
 
