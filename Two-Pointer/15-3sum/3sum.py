@@ -1,29 +1,29 @@
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
+        left = 0
+        right = len(nums) - 1
         nums.sort()
         res = []
-        for i in range(len(nums) - 2):
-            if i > 0 and nums[i] == nums[i-1]:
-                continue
-            left = i+1
-            right = len(nums) - 1
-            while left < right:
-                sum_3 = nums[i] + nums[left] + nums[right]
-                if sum_3 == 0:
-                    res.append([nums[i],nums[left],nums[right]])
-                    while left < right and nums[left] == nums[left + 1]:
-                        left += 1
-                    while left < right and nums[right] == nums[right - 1]:
-                        right -= 1
-                    left += 1
-                    right -= 1
-                elif sum_3 < 0:
-                    left += 1
+        while left < right - 1:
+            left_itr = left + 1
+            right_itr = right
+            while left_itr < right_itr:
+                add = nums[left] + nums[left_itr] + nums[right_itr]
+                if add == 0:
+                    res.append([nums[left], nums[left_itr], nums[right_itr]])
+                    while left_itr+1 < right_itr and nums[left_itr] == nums[left_itr+1]:
+                        left_itr+=1
+                    while right_itr - 1 > left_itr and nums[right_itr] == nums[right_itr-1]:
+                        right_itr-=1
+                    right_itr-=1
+                    left_itr+=1
+                elif add > 0:
+                    right_itr-=1
                 else:
-                    right -= 1
-                   
+                    left_itr+=1
+            while left+1 < len(nums) and nums[left] == nums[left+1]:
+                left+=1
+            left+=1
         return res
 
-
-                
         
